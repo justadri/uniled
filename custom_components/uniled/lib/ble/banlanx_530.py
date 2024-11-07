@@ -846,7 +846,7 @@ class SP530EProxy(UniledBleModel):
         if not hasattr(advertisement, "manufacturer_data"):
             return None
         for mid, data in advertisement.manufacturer_data.items():
-            if mid != self.ble_manufacturer_id or data[1] != 0x10:
+            if mid != self.ble_manufacturer_id or (data[1] != 0x10 and data[1] != 0x00):
                 continue
             for signature in MODEL_SIGNATURE_LIST:
                 for id, name in signature.ids.items():
@@ -1586,5 +1586,5 @@ class BanlanX530(SP530EProxy):
 ## SP530E
 ##
 SP530E = SP530EProxy(
-    id=0xFF, name="SP530E", info="SP530E PWM/SPI Controller"
+    id=0x4E, name="SP530E", info="SP530E PWM/SPI Controller"
 )
