@@ -4,7 +4,9 @@
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]][license]
 
-# ![HA][ha-logo] UniLED v2.2.5 - The Universal Light Controller
+# ![HA][ha-logo] UniLED v2.2.5.a - The Universal Light Controller
+
+## Forked from [monty68/uniled](https://github.com/monty68/uniled) from [o1hitman1o/uniled](https://github.com/o1hitman1o/uniled) to add support for SP530E
 
 ### UniLED supports the following range of BLE LED controllers:
 

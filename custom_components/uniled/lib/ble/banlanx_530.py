@@ -38,7 +38,7 @@ from ..chips import (
     UNILED_CHIP_ORDER_RGBCW,
 )
 from .device import (
-    UUID_BASE_FORMAT as BANLANX5XX_UUID_FORMAT,
+    UUID_BASE_FORMAT as BANLANX530_UUID_FORMAT,
     ParseNotificationError,
     UniledBleDevice,
     UniledBleModel,
@@ -49,13 +49,13 @@ import logging
 
 _LOGGER = logging.getLogger(__name__)
 
-BANLANX5XX_MANUFACTURER: Final = "SPLED (BanlanX)"
-BANLANX5XX_MANUFACTURER_ID: Final = 20563
-BANLANX5XX_UUID_SERVICE = [
-    BANLANX5XX_UUID_FORMAT.format(part) for part in ["e0ff", "ffe0"]
+BANLANX530_MANUFACTURER: Final = "SPLED (BanlanX)"
+BANLANX530_MANUFACTURER_ID: Final = 20563
+BANLANX530_UUID_SERVICE = [
+    BANLANX530_UUID_FORMAT.format(part) for part in ["e0ff", "ffe0"]
 ]
-BANLANX5XX_UUID_WRITE = [BANLANX5XX_UUID_FORMAT.format(part) for part in ["ffe1"]]
-BANLANX5XX_UUID_READ = []
+BANLANX530_UUID_WRITE = [BANLANX530_UUID_FORMAT.format(part) for part in ["ffe1"]]
+BANLANX530_UUID_READ = []
 
 DICTOF_ONOFF_EFFECTS: Final = {
     0x01: UNILEDEffects.FLOW_FORWARD,
@@ -696,145 +696,145 @@ class SP530E(Signature):
     }
 
 
-dataclass(frozen=True)
+# dataclass(frozen=True)
 
 
-class SP531E_SP541E(Signature):
-    info = "PWM Single Color (Music) Controller"
-    conf = {
-        0x01: CFG_81(),
-    }
-    ids = {
-        0x20: "SP531E",
-        0x2C: "SP541E",
-    }
-
-
-dataclass(frozen=True)
-
-
-class SP532E_SP542E(Signature):
-    info = "PWM CCT (Music) Controller"
-    conf = {
-        0x03: CFG_83(),
-    }
-    ids = {0x21: "SP532E", 0x2D: "SP542E"}
-
-
-dataclass(frozen=True)
-
-
-class SP533E_SP543E(Signature):
-    info = "PWM RGB (Music) Controller"
-    conf = {
-        0x05: CFG_85(),
-    }
-    ids = {0x22: "SP533E", 0x2E: "SP543E"}
-
-
-dataclass(frozen=True)
-
-
-class SP534E_SP544E(Signature):
-    info = "PWM RGBW (Music) Controller"
-    conf = {
-        0x07: CFG_87(),
-    }
-    ids = {0x23: "SP534E", 0x2F: "SP544E"}
-
-
-dataclass(frozen=True)
-
-
-class SP535E_SP545E(Signature):
-    info = "PWM RGBCCT (Music) Controller"
-    conf = {
-        0x0A: CFG_8A(),
-    }
-    ids = {0x24: "SP535E", 0x30: "SP545E"}
-
-
-dataclass(frozen=True)
-
-
-class SP536E_SP546E(Signature):
-    info = "SPI Single Color (Music) Controller"
-    conf = {
-        0x02: CFG_82(),
-    }
-    ids = {0x25: "SP536E", 0x31: "SP546E"}
-
-
-dataclass(frozen=True)
-
-
-class SP537E_SP547E(Signature):
-    info = "SPI CCT (Music) Controller"
-    conf = {0x04: CFG_84(), 0x0D: CFG_8D()}
-    ids = {0x26: "SP537E", 0x32: "SP547E"}
-
-
-dataclass(frozen=True)
-
-
-class SP538E_SP548E(Signature):
-    info = "SPI RGB (Music) Controller"
-    conf = {
-        0x06: CFG_86(),
-    }
-    ids = {0x27: "SP538E", 0x33: "SP548E"}
-
-
-dataclass(frozen=True)
-
-
-class SP539E_SP549E(Signature):
-    info = "SPI RGBW (Music) Controller"
-    conf = {
-        0x08: CFG_88(),
-    }
-    ids = {0x28: "SP539E", 0x34: "SP549E"}
-
-
-dataclass(frozen=True)
-
-
-class SP53AE_SP54AE(Signature):
-    info = "SPI RGBCCT (Music) Controller"
-    conf = {
-        0x0B: CFG_8B(),
-        0x0E: CFG_8E(),
-    }
-    ids = {0x29: "SP53AE", 0x35: "SP54AE"}
+# class SP531E_SP541E(Signature):
+#     info = "PWM Single Color (Music) Controller"
+#     conf = {
+#         0x01: CFG_81(),
+#     }
+#     ids = {
+#         0x20: "SP531E",
+#         0x2C: "SP541E",
+#     }
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP532E_SP542E(Signature):
+#     info = "PWM CCT (Music) Controller"
+#     conf = {
+#         0x03: CFG_83(),
+#     }
+#     ids = {0x21: "SP532E", 0x2D: "SP542E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP533E_SP543E(Signature):
+#     info = "PWM RGB (Music) Controller"
+#     conf = {
+#         0x05: CFG_85(),
+#     }
+#     ids = {0x22: "SP533E", 0x2E: "SP543E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP534E_SP544E(Signature):
+#     info = "PWM RGBW (Music) Controller"
+#     conf = {
+#         0x07: CFG_87(),
+#     }
+#     ids = {0x23: "SP534E", 0x2F: "SP544E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP535E_SP545E(Signature):
+#     info = "PWM RGBCCT (Music) Controller"
+#     conf = {
+#         0x0A: CFG_8A(),
+#     }
+#     ids = {0x24: "SP535E", 0x30: "SP545E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP536E_SP546E(Signature):
+#     info = "SPI Single Color (Music) Controller"
+#     conf = {
+#         0x02: CFG_82(),
+#     }
+#     ids = {0x25: "SP536E", 0x31: "SP546E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP537E_SP547E(Signature):
+#     info = "SPI CCT (Music) Controller"
+#     conf = {0x04: CFG_84(), 0x0D: CFG_8D()}
+#     ids = {0x26: "SP537E", 0x32: "SP547E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP538E_SP548E(Signature):
+#     info = "SPI RGB (Music) Controller"
+#     conf = {
+#         0x06: CFG_86(),
+#     }
+#     ids = {0x27: "SP538E", 0x33: "SP548E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP539E_SP549E(Signature):
+#     info = "SPI RGBW (Music) Controller"
+#     conf = {
+#         0x08: CFG_88(),
+#     }
+#     ids = {0x28: "SP539E", 0x34: "SP549E"}
+# 
+# 
+# dataclass(frozen=True)
+# 
+# 
+# class SP53AE_SP54AE(Signature):
+#     info = "SPI RGBCCT (Music) Controller"
+#     conf = {
+#         0x0B: CFG_8B(),
+#         0x0E: CFG_8E(),
+#     }
+#     ids = {0x29: "SP53AE", 0x35: "SP54AE"}
 
 
 MODEL_SIGNATURE_LIST: Final = [
     SP530E,
-    SP531E_SP541E,
-    SP532E_SP542E,
-    SP533E_SP543E,
-    SP534E_SP544E,
-    SP535E_SP545E,
-    SP536E_SP546E,
-    SP537E_SP547E,
-    SP538E_SP548E,
-    SP539E_SP549E,
-    SP53AE_SP54AE,
+    # SP531E_SP541E,
+    # SP532E_SP542E,
+    # SP533E_SP543E,
+    # SP534E_SP544E,
+    # SP535E_SP545E,
+    # SP536E_SP546E,
+    # SP537E_SP547E,
+    # SP538E_SP548E,
+    # SP539E_SP549E,
+    # SP53AE_SP54AE,
 ]
 
 
 ##
 ## BanlanX SP53XE Proxy Model
 ##
-class SP5xxEProxy(UniledBleModel):
-    """BanlanX SP5xxE Proxy Model"""
+class SP530EProxy(UniledBleModel):
+    """BanlanX SP530E Proxy Model"""
 
     def match_ble_model(self, model: str) -> UniledBleModel | None:
         for signature in MODEL_SIGNATURE_LIST:
             for id, name in signature.ids.items():
                 if model != name:
                     continue
-                return BanlanX5xx(
+                return BanlanX530(
                     id=id, name=name, info=signature.info, conf=signature.conf
                 )
         return None
@@ -842,7 +842,7 @@ class SP5xxEProxy(UniledBleModel):
     def match_ble_device(
         self, device: BLEDevice, advertisement: AdvertisementData | None = None
     ) -> UniledBleModel | None:
-        """Match to one of the SP5xxE devices"""
+        """Match to one of the SP530E devices"""
         if not hasattr(advertisement, "manufacturer_data"):
             return None
         for mid, data in advertisement.manufacturer_data.items():
@@ -852,7 +852,7 @@ class SP5xxEProxy(UniledBleModel):
                 for id, name in signature.ids.items():
                     if id != data[0]:
                         continue
-                    return BanlanX5xx(
+                    return BanlanX530(
                         id=id, name=name, info=signature.info, conf=signature.conf
                     )
         return None
@@ -863,21 +863,21 @@ class SP5xxEProxy(UniledBleModel):
             model_num=id,
             model_name=name,
             description=info,
-            manufacturer=BANLANX5XX_MANUFACTURER,
+            manufacturer=BANLANX530_MANUFACTURER,
             channels=1,
-            ble_manufacturer_id=BANLANX5XX_MANUFACTURER_ID,
-            ble_service_uuids=BANLANX5XX_UUID_SERVICE,
-            ble_write_uuids=BANLANX5XX_UUID_WRITE,
-            ble_read_uuids=BANLANX5XX_UUID_READ,
+            ble_manufacturer_id=BANLANX530_MANUFACTURER_ID,
+            ble_service_uuids=BANLANX530_UUID_SERVICE,
+            ble_write_uuids=BANLANX530_UUID_WRITE,
+            ble_read_uuids=BANLANX530_UUID_READ,
             ble_notify_uuids=[],
             ble_manufacturer_data=bytearray([id & 0xFF, 0x10]),
         )
 
 
 ##
-## BanlanX SP5xxE Protocol Implementation
+## BanlanX SP530E Protocol Implementation
 ##
-class BanlanX5xx(SP5xxEProxy):
+class BanlanX530(SP530EProxy):
     """BanlanX SP530E Protocol Implementation"""
 
     _HEADER_LENGTH = 6
@@ -1583,8 +1583,8 @@ class BanlanX5xx(SP5xxEProxy):
 
 
 ##
-## SP5xxE
+## SP530E
 ##
-SP5XXE = SP5xxEProxy(
-    id=0xFF, name="SP5xxE", info="SP53xE and SP54xE PWM/SPI Controllers"
+SP530E = SP530EProxy(
+    id=0xFF, name="SP530E", info="SP530E PWM/SPI Controller"
 )
